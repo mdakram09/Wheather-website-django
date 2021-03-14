@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="'UTF-8">
+    <meta name="viewport" content="wight=device-width, initial-scale=1.0 ">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="background-color: black; color: white;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:transparent;">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown link
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+</div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-5 offset-1">
+                <h1>Weather in your city</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="city">City</label>
+                {{ form.name }}
+                <input type="submit" name="send" value="Found" class="mt-2 btn btn-danger">
+            </form>
+        </div>
+
+        <div class="col-5 offset-1" >
+            <h1>Information</h1>
+
+            {% for info in all_info %}
+            <div class="alert alert-primary">
+                <b>City </b>{{info.city}}<br>
+                <b>Temperature </b>{{info.temp}}<sup>0</sup><br>
+                <img src="http://openweathermap.org/img/w/{{info.icon}}.png" alt="Photo weather" class="img-thumbnail">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+    </div>
+</body>
+</html>

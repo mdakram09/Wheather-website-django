@@ -1,0 +1,5 @@
+gunicorn
+django-heroku
+django
+requests
+whitenoise
